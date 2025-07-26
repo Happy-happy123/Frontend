@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东(JD.COM)-正品低价、品质保障、配送及时、轻松购物！</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            min-width: 1200px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        /* 顶部导航栏 */
+        .top-bar {
+            height: 30px;
+            background-color: #e3e4e5;
+            border-bottom: 1px solid #ddd;
+            font-size: 12px;
+            line-height: 30px;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .top-bar-left span {
+            margin-right: 15px;
+        }
+        
+        .top-bar-left a {
+            margin-right: 5px;
+            padding: 0 5px;
+        }
+        
+        .top-bar-right ul {
+            display: flex;
+        }
+        
+        .top-bar-right li {
+            padding: 0 10px;
+            border-left: 1px solid #ddd;
+        }
+        
+        .top-bar-right li:first-child {
+            border-left: none;
+        }
+        
+        .top-bar a:hover {
+            color: #e33333;
+        }
+        
+        /* 头部区域 */
+        .header {
+            height: 140px;
+            background-color: #fff;
+        }
+        
+        .header .container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            width: 190px;
+            height: 85px;
+            background-color: #e33333;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+        }
+        
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            height: 40px;
+            border: 2px solid #e33333;
+            padding: 0 15px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 80px;
+            height: 40px;
+            background-color: #e33333;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .search-hotwords {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        
+        .search-hotwords a {
+            margin-right: 10px;
+        }
+        
+        .search-hotwords a:hover {
+            color: #e33333;
+        }
+        
+        .search-suggest {
+            position: absolute;
+            top: 42px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #ddd;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .search-suggest ul {
+            padding: 10px;
+        }
+        
+        .search-suggest li {
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        
+        .search-suggest li:hover {
+            background-color: #f5f5f5;
+            color: #e33333;
+        }
+        
+        .cart-box {
+            width: 188px;
+            height: 40px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-box .icon {
+            font-size: 20px;
+            color: #e33333;
+            margin-right: 5px;
+        }
+        
+        .cart-box .text {
+            font-size: 14px;
+        }
+        
+        .cart-box .count {
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            background-color: #e33333;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+        
+        .cart-popup {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 320px;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: none;
+            padding: 15px;
+        }
+        
+        .cart-popup .empty-cart {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        /* 主导航 */
+        .main-nav {
+            height: 40px;
+            background-color: #e33333;
+            color: white;
+        }
+        
+        .main-nav .container {
+            display: flex;
+            height: 100%;
+        }
+        
+        .nav-category {
+            width: 190px;
+            height: 40px;
+            background-color: #c91623;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .nav-menu {
+            flex: 1;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            height: 100%;
+        }
+        
+        .nav-menu li {
+            padding: 0 20px;
+            line-height: 40px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            font-size: 16px;
+        }
+        
+        .nav-menu a:hover {
+            color: #ffcc00;
+        }
+        
+        .category-menu {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 190px;
+            background-color: rgba(255,255,255,0.95);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: none;
+        }
+        
+        .category-menu ul {
+            padding: 10px 0;
+        }
+        
+        .category-menu li {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .category-menu li:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .category-menu li:hover a {
+            color: #e33333;
+        }
+        
+        .category-menu li:hover .sub-menu {
+            display: block;
+        }
+        
+        .category-menu a {
+            color: #666;
+            font-size: 14px;
+            display: block;
+        }
+        
+        .category-menu .arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .sub-menu {
+            position: absolute;
+            left: 190px;
+            top: 0;
+            width: 800px;
+            height: 400px;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            display: none;
+            z-index: 100;
+        }
+        
+        .sub-menu h3 {
+            font-size: 16px;
+            color: #e33333;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .sub-menu ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sub-menu li {
+            width: 33.33%;
+            padding: 5px 0;
+        }
+        
+        /* 轮播图区域 */
+        .banner {
+            height: 480px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .banner-container {
+            position: relative;
+            height: 100%;
+        }
+        
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .banner-slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .banner-prev, .banner-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.3);
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+        
+        .banner-prev:hover, .banner-next:hover {
+            background-color: rgba(0,0,0,0.6);
+        }
+        
+        .banner-prev {
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .banner-next {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .banner-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 100;
+        }
+        
+        .banner-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .banner-indicator.active {
+            background-color: #fff;
+        }
+        
+        /* 秒杀区域 */
+        .seckill {
+            height: 260px;
+            background-color: white;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .seckill-header {
+            height: 50px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .seckill-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e33333;
+            margin-right: 10px;
+        }
+        
+        .seckill-countdown {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .countdown-text {
+            font-size: 14px;
+            color: #666;
+            margin-right: 5px;
+        }
+        
+        .countdown-item {
+            width: 22px;
+            height: 22px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 22px;
+            font-size: 14px;
+            margin: 0 2px;
+        }
+        
+        .seckill-more {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .seckill-more a {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .seckill-more a:hover {
+            color: #e33333;
+        }
+        
+        .seckill-content {
+            display: flex;
+            padding: 15px;
+        }
+        
+        .seckill-item {
+            width: 20%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .seckill-item::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 80px;
+            background-color: #eee;
+        }
+        
+        .seckill-item:last-child::after {
+            display: none;
+        }
+        
+        .seckill-item img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+        
+        .seckill-price {
+            color: #e33333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .seckill-original {
+            color: #999;
+            font-size: 14px;
+            text-decoration: line-through;
+            margin-top: 3px;
+        }
+        
+        /* 商品推荐 */
+        .product-grid {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border: 1px solid #eee;
+            padding: 15px;
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            margin-bottom: 15px;
+        }
+        
+        .product-img img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .product-name {
+            height: 40px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .product-price {
+            color: #e33333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-tag {
+            background-color: #e33333;
+            color: white;
+            font-size: 12px;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            margin-top: 30px;
+            background-color: white;
+            padding: 30px 0;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 12px;
+            background-color: #ddd;
+        }
+        
+        .footer-links a:last-child::after {
+            display: none;
+        }
+        
+        .footer-info {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span>你好，欢迎来到京东！</span>
+                <a href="#">请登录</a>
+                <a href="#">免费注册</a>
+            </div>
+            <div class="top-bar-right">
+                <ul>
+                    <li><a href="#">我的订单</a></li>
+                    <li><a href="#">我的京东</a></li>
+                    <li><a href="#">京东会员</a></li>
+                    <li><a href="#">企业采购</a></li>
+                    <li><a href="#">客户服务</a></li>
+                    <li><a href="#">网站导航</a></li>
+                    <li><a href="#">手机京东</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 头部区域 -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">京东</div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="冰箱">
+                <button class="search-btn">搜索</button>
+                <div class="search-hotwords">
+                    <a href="#">手机</a>
+                    <a href="#">电脑</a>
+                    <a href="#">空调</a>
+                    <a href="#">冰箱</a>
+                    <a href="#">洗衣机</a>
+                    <a href="#">平板</a>
+                    <a href="#">耳机</a>
+                </div>
+                <div class="search-suggest">
+                    <ul>
+                        <li>冰箱家用</li>
+                        <li>冰箱双开门</li>
+                        <li>冰箱小型</li>
+                        <li>冰箱三门</li>
+                        <li>冰箱变频</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cart-box">
+                <i class="fas fa-shopping-cart icon"></i>
+                <span class="text">我的购物车</span>
+                <span class="count">0</span>
+                <div class="cart-popup">
+                    <div class="empty-cart">购物车中还没有商品，赶紧选购吧！</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主导航 -->
+    <div class="main-nav">
+        <div class="container">
+            <div class="nav-category">全部商品分类</div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">秒杀</a></li>
+                    <li><a href="#">优惠券</a></li>
+                    <li><a href="#">PLUS会员</a></li>
+                    <li><a href="#">品牌闪购</a></li>
+                    <li><a href="#">拍卖</a></li>
+                    <li><a href="#">京东家电</a></li>
+                    <li><a href="#">京东超市</a></li>
+                    <li><a href="#">京东生鲜</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 分类菜单 -->
+        <div class="category-menu">
+            <ul>
+                <li>
+                    <a href="#">家用电器 <i class="fas fa-angle-right arrow"></i></a>
+                    <div class="sub-menu">
+                        <h3>家用电器</h3>
+                        <ul>
+                            <li><a href="#">冰箱</a></li>
+                            <li><a href="#">洗衣机</a></li>
+                            <li><a href="#">空调</a></li>
+                            <li><a href="#">电视</a></li>
+                            <li><a href="#">热水器</a></li>
+                            <li><a href="#">厨卫大电</a></li>
+                            <li><a href="#">厨房小电</a></li>
+                            <li><a href="#">生活电器</a></li>
+                            <li><a href="#">个护健康</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">手机数码 <i class="fas fa-angle-right arrow"></i></a>
+                    <div class="sub-menu">
+                        <h3>手机数码</h3>
+                        <ul>
+                            <li><a href="#">手机</a></li>
+                            <li><a href="#">平板</a></li>
+                            <li><a href="#">笔记本</a></li>
+                            <li><a href="#">相机</a></li>
+                            <li><a href="#">智能设备</a></li>
+                            <li><a href="#">耳机</a></li>
+                            <li><a href="#">存储</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">电脑办公 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">家居家装 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">男装女装 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">美妆护肤 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">医药保健 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">图书文娱 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">运动户外 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+                <li>
+                    <a href="#">生鲜食品 <i class="fas fa-angle-right arrow"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 轮播图 -->
+    <div class="banner">
+        <div class="banner-container">
+            <div class="banner-slide active">
+                <img src="https://img14.360buyimg.com/pop/s1180x440_jfs/t1/169620/39/35482/106221/63b8f1a0Ee4b7d5f2/3b1f5b1c5f4c8f2c.jpg" alt="Banner 1">
+            </div>
+            <div class="banner-slide">
+                <img src="https://img12.360buyimg.com/pop/s1180x440_jfs/t1/209200/31/28925/110240/63b8f1a0Ee2cdf4f2/6c9c5d1c5e4f8e2e.jpg" alt="Banner 2">
+            </div>
+            <div class="banner-slide">
+                <img src="https://img11.360buyimg.com/pop/s1180x440_jfs/t1/192694/35/32854/116944/63b8f1a0E4c7b7a1d/9a1c5c1c5e4f8e2e.jpg" alt="Banner 3">
+            </div>
+            <div class="banner-slide">
+                <img src="https://img10.360buyimg.com/pop/s1180x440_jfs/t1/213981/39/25907/126590/63b8f1a0E2c3b3a1d/8a1c5c1c5e4f8e2e.jpg" alt="Banner 4">
+            </div>
+            <div class="banner-prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="banner-next"><i class="fas fa-chevron-right"></i></div>
+            <div class="banner-indicators">
+                <div class="banner-indicator active"></div>
+                <div class="banner-indicator"></div>
+                <div class="banner-indicator"></div>
+                <div class="banner-indicator"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 秒杀区域 -->
+    <div class="seckill">
+        <div class="seckill-header">
+            <div class="seckill-title">京东秒杀</div>
+            <div class="seckill-countdown">
+                <span class="countdown-text">距离结束</span>
+                <div class="countdown-item">01</div>
+                <div>:</div>
+                <div class="countdown-item">22</div>
+                <div>:</div>
+                <div class="countdown-item">13</div>
+            </div>
+            <div class="seckill-more">
+                <a href="#">更多秒杀 <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+        <div class="seckill-content">
+            <div class="seckill-item">
+                <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="冰箱1">
+                <div class="seckill-price">¥1999</div>
+                <div class="seckill-original">¥2999</div>
+            </div>
+            <div class="seckill-item">
+                <img src="https://img13.360buyimg.com/n1/s200x200_jfs/t1/221767/3/27861/114644/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="冰箱2">
+                <div class="seckill-price">¥2499</div>
+                <div class="seckill-original">¥3499</div>
+            </div>
+            <div class="seckill-item">
+                <img src="https://img10.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="冰箱3">
+                <div class="seckill-price">¥1799</div>
+                <div class="seckill-original">¥2599</div>
+            </div>
+            <div class="seckill-item">
+                <img src="https://img11.360buyimg.com/n1/s200x200_jfs/t1/221767/3/27861/114644/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="冰箱4">
+                <div class="seckill-price">¥2899</div>
+                <div class="seckill-original">¥3999</div>
+            </div>
+            <div class="seckill-item">
+                <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="冰箱5">
+                <div class="seckill-price">¥1599</div>
+                <div class="seckill-original">¥2299</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 商品推荐 -->
+    <div class="container">
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="商品1">
+                </div>
+                <div class="product-name">松下(Panasonic) 435升多门冰箱 超薄嵌入 全开抽屉 自动制冰 自由嵌入式 纳诺怡X 风冷无霜 NR-EW45TGA-W</div>
+                <div class="product-price">¥5999</div>
+                <div>
+                    <span class="product-tag">自营</span>
+                    <span class="product-tag">满减</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="商品2">
+                </div>
+                <div class="product-name">松下(Panasonic) 498升多门冰箱 全开抽屉 自动制冰 自由嵌入 纳诺怡X 风冷无霜 珍珠白 NR-EW49TGA-W</div>
+                <div class="product-price">¥6999</div>
+                <div>
+                    <span class="product-tag">自营</span>
+                    <span class="product-tag">满减</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="商品3">
+                </div>
+                <div class="product-name">松下(Panasonic) 350升多门冰箱 超薄嵌入 全开抽屉 自动制冰 自由嵌入式 纳诺怡X 风冷无霜 NR-EC35WPA-W</div>
+                <div class="product-price">¥4999</div>
+                <div>
+                    <span class="product-tag">自营</span>
+                    <span class="product-tag">满减</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="商品4">
+                </div>
+                <div class="product-name">松下(Panasonic) 453升多门冰箱 超薄嵌入 全开抽屉 自动制冰 自由嵌入式 纳诺怡X 风冷无霜 NR-EC43VG-N5</div>
+                <div class="product-price">¥5499</div>
+                <div>
+                    <span class="product-tag">自营</span>
+                    <span class="product-tag">满减</span>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://img14.360buyimg.com/n1/s200x200_jfs/t1/207894/30/30669/104540/63c4a5e5E5c2a3d1c/2b2c0f1a7f5f5b5f.jpg" alt="商品5">
+                </div>
+                <div class="product-name">松下(Panasonic) 498升多门冰箱 全开抽屉 自动制冰 自由嵌入 纳诺怡X 风冷无霜 星光银 NR-EW49GBA-S</div>
+                <div class="product-price">¥7299</div>
+                <div>
+                    <span class="product-tag">自营</span>
+                    <span class="product-tag">满减</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">人才招聘</a>
+                <a href="#">商家入驻</a>
+                <a href="#">广告服务</a>
+                <a href="#">手机京东</a>
+                <a href="#">友情链接</a>
+                <a href="#">销售联盟</a>
+                <a href="#">京东社区</a>
+                <a href="#">京东公益</a>
+            </div>
+            <div class="footer-info">
+                <p>京公网安备 11000002000001号 | 京ICP证070359号 | 互联网药品信息服务资格证编号(京)-经营性-2014-0008 | 新出发京零 字第大120007号</p>
+                <p>互联网出版许可证编号新出网证(京)字150号 | 出版物经营许可证 | 网络文化经营许可证京网文[2020]6112-1201号 | 违法和不良信息举报电话：4006561155</p>
+                <p>Copyright © 2004-2025 京东JD.com 版权所有</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 轮播图组件
+            const slides = document.querySelectorAll('.banner-slide');
+            const indicators = document.querySelectorAll('.banner-indicator');
+            const prevBtn = document.querySelector('.banner-prev');
+            const nextBtn = document.querySelector('.banner-next');
+            let currentSlide = 0;
+            let slideInterval;
+            
+            // 切换轮播图
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                indicators[currentSlide].classList.remove('active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+            
+            // 下一张
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+            
+            // 上一张
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+            
+            // 启动自动轮播
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            // 停止自动轮播
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+            
+            // 绑定事件
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopSlideShow();
+                startSlideShow();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopSlideShow();
+                startSlideShow();
+            });
+            
+            // 指示器点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                    stopSlideShow();
+                    startSlideShow();
+                });
+            });
+            
+            // 鼠标悬停停止轮播
+            const banner = document.querySelector('.banner');
+            banner.addEventListener('mouseenter', stopSlideShow);
+            banner.addEventListener('mouseleave', startSlideShow);
+            
+            // 启动轮播
+            startSlideShow();
+            
+        const searchInput = document.querySelector('.search-input');
+        const searchSuggest = document.querySelector('.search-suggest');
+        
+        searchInput.addEventListener('focus', function() {
+            searchSuggest.style.display = 'block';
+        });
+        
+        searchInput.addEventListener('blur', function() {
+            setTimeout(() => {
+                searchSuggest.style.display = 'none';
+            }, 200);
+        });
+        
+        searchInput.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                searchSuggest.style.display = 'block';
+            } else {
+                searchSuggest.style.display = 'none';
+            }
+        });
+        
+        const suggestItems = document.querySelectorAll('.search-suggest li');
+        suggestItems.forEach(item => {
+            item.addEventListener('mousedown', function(e) {
+                // 防止默认行为，避免触发blur事件
+                e.preventDefault();
+                
+                // 将建议项的文本填充到搜索框
+                searchInput.value = this.textContent;
+                
+                // 隐藏建议框
+                searchSuggest.style.display = 'none';
+                
+                // 保持搜索框聚焦
+                searchInput.focus();
+            });
+        });
+            
+            // 购物车功能
+            const cartBox = document.querySelector('.cart-box');
+            const cartPopup = document.querySelector('.cart-popup');
+            
+            cartBox.addEventListener('mouseenter', function() {
+                cartPopup.style.display = 'block';
+            });
+            
+            cartBox.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    cartPopup.style.display = 'none';
+                }, 300);
+            });
+            
+            // 分类菜单功能
+            const navCategory = document.querySelector('.nav-category');
+            const categoryMenu = document.querySelector('.category-menu');
+            
+            navCategory.addEventListener('mouseenter', function() {
+                categoryMenu.style.display = 'block';
+            });
+            
+            navCategory.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    categoryMenu.style.display = 'none';
+                }, 300);
+            });
+            
+            categoryMenu.addEventListener('mouseenter', function() {
+                this.style.display = 'block';
+            });
+            
+            categoryMenu.addEventListener('mouseleave', function() {
+                this.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
