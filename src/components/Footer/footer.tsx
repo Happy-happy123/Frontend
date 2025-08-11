@@ -1,5 +1,5 @@
 import './footer.css';
-function Footer() {
+const Footer: React.FC = () => {
     return (
         <footer className="jd-footer">
             <div className="footer-nav">

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import './header.css';
+import { HoverLinkProps } from '../../type';
 // 可复用的HoverLink组件
-const HoverLink = ({ children }) => {
+const HoverLink: React.FC<HoverLinkProps> = ({ children }) => {
+
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -17,7 +19,7 @@ const HoverLink = ({ children }) => {
     );
 };
 
-function Header() {
+const Header: React.FC = () => {
     return (
         <div className="header">
             <div className="header-left">

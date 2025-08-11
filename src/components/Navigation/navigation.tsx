@@ -1,8 +1,11 @@
 import './navigation.css';
 import { useState, useEffect } from 'react';
-function MainNavigation() {
+import { BannerItem } from '../../type';
+
+const MainNavigation: React.FC = () => {
+
     const [currentIndex, setCurrentIndex] = useState(0);
-    const banners = [
+    const banners: BannerItem[] = [
         { id: 1, title: '618大促', desc: '全场5折起' },
         { id: 2, title: '家电狂欢', desc: '满2000减300' },
         { id: 3, title: '数码产品', desc: '新品首发' },

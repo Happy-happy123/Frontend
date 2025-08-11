@@ -1,7 +1,7 @@
 import './search.css';
 import { useState } from 'react';
-
-const HoverLink = ({ children }) => {
+import { HoverLinkProps } from '../../type';
+const HoverLink: React.FC<HoverLinkProps> = ({ children }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -16,7 +16,7 @@ const HoverLink = ({ children }) => {
         </a>
     );
 };
-function SearchBar() {
+const SearchBar: React.FC = () => {
     return (
         <div className="search-container">
             <div className="wrap box">

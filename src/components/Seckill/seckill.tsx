@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './seckill.css';
-function SeckillSection() {
-    const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 0, seconds: 0 });
+import { Product } from '../../type';
+const SeckillSection: React.FC = () => {
 
+    const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 0, seconds: 0 });
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft(prev => {
@@ -32,7 +33,12 @@ function SeckillSection() {
 
         return () => clearInterval(timer);
     }, []);
-
+    const products: Product[] = [
+        { id: 1, currentPrice: 89.99, originalPrice: 899.99 },
+        { id: 2, currentPrice: 79.99, originalPrice: 799.99 },
+        { id: 3, currentPrice: 69.99, originalPrice: 699.99 },
+        { id: 4, currentPrice: 59.99, originalPrice: 599.99 }
+    ]
     return (
         <div className="seckill-section">
             <div className="seckill-header">
@@ -48,14 +54,14 @@ function SeckillSection() {
             </div>
 
             <div className="seckill-products">
-                {[1, 2, 3, 4].map(id => (
-                    <div key={id} className="seckill-product">
+                {products.map(product => (
+                    <div key={product.id} className="seckill-product">
                         <div className="product-image">
-                            <img src={require(`./${id}.jpg`)} alt={`Product ${id}`} className='image' />
+                            <img src={require(`./${product.id}.jpg`)} alt={`Product ${product.id}`} className='image' />
                         </div>
                         <div className="product-price">
-                            <span className="current-price">¥{(99 - id * 10).toFixed(2)}</span>
-                            <span className="original-price">¥{(8999 - id * 10).toFixed(2)}</span>
+                            <span className="current-price">¥{product.currentPrice.toFixed(2)}</span>
+                            <span className="original-price">¥{product.originalPrice.toFixed(2)}</span>
                         </div>
                     </div>
                 ))}

@@ -9,7 +9,7 @@
 //         </div>
 //     )
 // }
-import './header.css';
+// import './header.css';
 //函数组件
 // const HeaderTop = (props) => {
 // 在函数组件的形参定义一个props，指向的是一个对象，包含了父组件传递过来的属性
@@ -44,3 +44,5 @@ import './header.css';
 //         )
 //     }
 // }
+
+console.log(12345)

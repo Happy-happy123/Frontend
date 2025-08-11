@@ -21,8 +21,10 @@ import './index.css'
 
 
 //函数组件,从外部导入
-import App from './app';
+import App from './app.tsx';
+
 //创建一个react根元素
 const root = ReactDOM.createRoot(document.getElementById('root'));
+if (!root) throw new Error('root不存在')//ts类型推断
 //将react元素渲染到页面
 root.render(<App />);
